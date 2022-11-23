@@ -32,7 +32,7 @@ from sklearn.cluster import KMeans
 def SimFullGraph(X, sigma, treshold=5*1e-5):
     Sim = np.exp(-np.square(euclidean_distances(X,X))/(2*sigma**2))
     Sim = Sim*(Sim>=treshold)
-    sSim = csr_matrix(Sim) 
+    sSim = csr_matrix(Sim)
     return sSim
 
 def SimEpsNeighborGraphs(X, eps):
@@ -46,7 +46,7 @@ def SimKNearestNeighborGraphs(X, k):
     kth = np.sort(Sim, axis=1)[:,k-1]
     BoolSim = (Sim <= np.repeat(kth,n).reshape((n,n))) + (Sim <= np.repeat(kth,n).reshape((n,n))).T
     Sim = Sim*BoolSim
-    sSim = csr_matrix(Sim) 
+    sSim = csr_matrix(Sim)
     #sSim = (sSim + sSim.T)/2
     return sSim
 
@@ -155,7 +155,7 @@ if __name__ == "__main__":
     #Sim = SimKNearestNeighborGraphs(X, k)
     a = Sim.toarray()
     k = 4
-    A = NormalizedNGSpectralClustering(Sim,k)    
+    A = UnormalizedSpectralClustering(Sim,k)    
     
     for i in range(k):
         plt.scatter( X[A[i],0], X[A[i],1] )
