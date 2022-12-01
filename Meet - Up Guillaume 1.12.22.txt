@@ -1,0 +1,23 @@
+Compare to other Clustering methods - k-means
+
+Dataset Credit? - Compare to synthesized data
+In order to see how it is better
+
+Compare to a sample of dataset first
+
+Libraries as Tsne, umap for representation 2D
+
+Clustering to one side and clustering to other side?!
+Distribution of different clusters
+Split dataset into two parts and compare clusters - stability idea (k too big and size down, at which k does it differ significantly)
+
+Explanation of results less important
+
+Presentation - 7min (to class)
+Report - 4 Pages
+
+Technicals:
+- Examine performance generalizable
+- Hyperparameters - k, Sim Matrix, distribution parameters
+- Compare limits of algorithms - ideally, not necessary
+- Convergence - not in error sense, at least state it
