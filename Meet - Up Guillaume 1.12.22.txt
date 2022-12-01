@@ -1,14 +1,10 @@
 Compare to other Clustering methods - k-means
+In order to see how to which extend Spectral Clustering is better
 
-Dataset Credit? - Compare to synthesized data
-In order to see how it is better
-
-Compare to a sample of dataset first
+Dataset Credit? - Compare to synthesized data first and then compare it to a sample of the whole dataset first
 
 Libraries as Tsne, umap for representation 2D
 
-Clustering to one side and clustering to other side?!
-Distribution of different clusters
 Split dataset into two parts and compare clusters - stability idea (k too big and size down, at which k does it differ significantly)
 
 Explanation of results less important
