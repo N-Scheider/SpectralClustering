@@ -42,6 +42,7 @@ def SimEpsNeighborGraphs(X, eps):
     return sSim
 
 def SimKNearestNeighborGraphs(X, k):
+    n = np.shape(X)[0]
     Sim = euclidean_distances(X,X)
     kth = np.sort(Sim, axis=1)[:,k-1]
     BoolSim = (Sim <= np.repeat(kth,n).reshape((n,n))) + (Sim <= np.repeat(kth,n).reshape((n,n))).T
@@ -141,17 +142,17 @@ if __name__ == "__main__":
     I = [2,4,6,8]
     sigma = 0.244
     for i in range(len(I)):
-        X[m*i:m*(i+1),:] =  st.norm(I[i],sigma).rvs(size=m*d).reshape((m,2))
+        X[m*i:m*(i+1),:] =  st.norm(I[i],sigma).rvs(size=m*d).reshape((m,d))
     
     plt.scatter(X[:,0], X[:,1])
     plt.show()
     
     sigma = 1/2
-    Sim = SimFullGraph(X, sigma, treshold=5*1e-5)
+    #Sim = SimFullGraph(X, sigma, treshold=5*1e-5)
     #eps = 0.75
     #Sim = SimEpsNeighborGraphs(X, eps)
-    #k = 20
-    #Sim = SimMutualKNearestNeighborGraphs(X, k)
+    k = 20
+    Sim = SimMutualKNearestNeighborGraphs(X, k)
     #Sim = SimKNearestNeighborGraphs(X, k)
     a = Sim.toarray()
     k = 4
