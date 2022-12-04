@@ -42,10 +42,10 @@ def SimEpsNeighborGraphs(X, eps):
     return sSim
 
 def SimKNearestNeighborGraphs(X, k):
-    n = np.shape(X)[0]
+    n1 = X.shape[0]
     Sim = euclidean_distances(X,X)
     kth = np.sort(Sim, axis=1)[:,k-1]
-    BoolSim = (Sim <= np.repeat(kth,n).reshape((n,n))) + (Sim <= np.repeat(kth,n).reshape((n,n))).T
+    BoolSim = (Sim <= np.repeat(kth,n1).reshape((n1,n1))) + (Sim <= np.repeat(kth,n1).reshape((n1,n1))).T
     Sim = Sim*BoolSim
     sSim = csr_matrix(Sim)
     #sSim = (sSim + sSim.T)/2
