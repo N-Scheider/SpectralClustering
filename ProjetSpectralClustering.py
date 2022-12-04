@@ -42,16 +42,17 @@ def SimEpsNeighborGraphs(X, eps):
     return sSim
 
 def SimKNearestNeighborGraphs(X, k):
-    n1 = X.shape[0]
+    n = X.shape[0]
     Sim = euclidean_distances(X,X)
     kth = np.sort(Sim, axis=1)[:,k-1]
-    BoolSim = (Sim <= np.repeat(kth,n1).reshape((n1,n1))) + (Sim <= np.repeat(kth,n1).reshape((n1,n1))).T
+    BoolSim = (Sim <= np.repeat(kth,n).reshape((n,n))) + (Sim <= np.repeat(kth,n).reshape((n,n))).T
     Sim = Sim*BoolSim
     sSim = csr_matrix(Sim)
     #sSim = (sSim + sSim.T)/2
     return sSim
 
 def SimMutualKNearestNeighborGraphs(X, k):
+    n = X.shape[0]
     Sim = euclidean_distances(X,X)
     kth = np.sort(Sim, axis=1)[:,k-1]
     BoolSim = (Sim <= np.repeat(kth,n).reshape((n,n))) * (Sim <= np.repeat(kth,n).reshape((n,n))).T
@@ -74,6 +75,7 @@ def getL(D,W):
 
 
 def getLrw(D,W):
+    n = D.shape[0]
     Dinv = D.power(-1)
     I = sparse.diags(np.ones(n))
     
@@ -81,6 +83,7 @@ def getLrw(D,W):
     return I - P
 
 def getLsym(D,W):
+    n = D.shape[0]
     D_ = D.power(-1/2)
     I = sparse.diags(np.ones(n))
     
