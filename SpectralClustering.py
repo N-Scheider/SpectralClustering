@@ -81,6 +81,15 @@ def SimMutualKNearestNeighborGraphs(X, k):
     #sSim = (sSim + sSim.T)/2
     return sSim
 
+def SimFullyConnectedGraph(X, sigma):
+    n = X.shape[0]
+    dist = lambda x, y, sig: np.exp(-np.linalg.norm(x-y,2)**2/2/sig**2)
+    sSim = np.zeros((n,n))
+    for i in range(n):
+        for j in range(n):
+            sSim[i, j] = dist(X[i,:], X[j,:], sigma)
+    return sSim.reshape((n,n))-np.diag(np.ones(n))
+
 
 #eigenvalues, eigenvector = eigs(Sim,k=k,which="SM")
 

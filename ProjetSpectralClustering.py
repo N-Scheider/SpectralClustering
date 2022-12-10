@@ -168,7 +168,9 @@ def GenerationData():
 def plottingDifferentSim(Data):
     
     plt.scatter(Data[:,0], Data[:,1], marker='*')
-    plt.title("Data point")
+    plt.title("Data points")
+    plt.axis('off')
+    plt.savefig("Img/DataPointsMoon.png")
     plt.show()
     posi = {}
     for i in range(len(Data)):
@@ -179,23 +181,37 @@ def plottingDifferentSim(Data):
     G = nx.from_scipy_sparse_matrix(Sim)
     print(f"SimEpsNeighborGraphs with eps={eps}")
     nx.draw(G, pos = posi, node_size=10, node_shape='*', node_color='b', edge_color='g')
+    plt.legend([f'eps={eps}'], loc="upper left")
+    plt.savefig("Img/SimEpsNeighbor.png")
     plt.show()
-    
 
     k=6
     Sim = SimKNearestNeighborGraphs(Data, k)
     G = nx.from_scipy_sparse_matrix(Sim)
     print(f"SimKNearestNeighborGraphs with k={k}")
-    nx.draw(G, pos = posi, node_size=10, node_shape='*', node_color='b', edge_color='g')
-    plt.show()    
+    nx.draw(G, pos = posi, node_size=10, node_shape='*', node_color='b', edge_color='g',)
+    plt.legend([f'k={k}'], loc="upper left")
+    plt.savefig("Img/SimKNeighbor.png")
+    plt.show()
     
-    k=12
+    k=6
     Sim = SimMutualKNearestNeighborGraphs(Data, k)
     G = nx.from_scipy_sparse_matrix(Sim)
     print(f"SimMutualKNearestNeighborGraphs with k={k}")
     nx.draw(G, pos = posi, node_size=10, node_shape='*', node_color='b', edge_color='g')
+    plt.legend([f'k={k}'], loc="upper left")
+    plt.savefig("Img/SimMutualKNeighbor.png")
     plt.show()    
     
+    # sig = 0.8
+    # Sim = SimFullyConnectedGraph(Data, sig)
+    # G = nx.from_numpy_matrix(Sim, parallel_edges=False)
+    # print(f"SimFullyConnectedGraph with k={k}")
+    # weights = np.array([G[u][v]['weight'] for u,v in G.edges()])
+    # nx.draw(G, pos = posi, node_size=10, node_shape='*', node_color='b', edge_color=weights, edge_cmap=plt.cm.Greens)
+    # plt.legend([f'sigma={sig}'], loc="upper left")
+    # plt.savefig("Img/SimFullConnected.png")
+    # plt.show()
     
 # =============================================================================
 #     sigma = 100
