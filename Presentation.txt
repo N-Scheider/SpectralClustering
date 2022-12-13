@@ -1,0 +1,30 @@
+Similarity Matrices - Noah
+
+k-neighbors:
+* Sim
+* - no good way of standardization
+* - connecting outliers
+* + stability control
+* + connection to outliers
+Results
+
+Mutual k-neighbors:
+* Sim
+* - no good way of standardization
+* - assigning outliers to cluster (crucial?) -> Solution: Identify and remove outliers?!
+* + stability control
+* Results
+
+epsilon neighborhood:
+* Sim
+* - need of useful standardization
+* - Assigning outliers to cluser (crucial?) -> Solution: Identify and remove outliers?!
+* Results
+
+Gaussian Full connected:
+* Sim
+* - Computationally unefficient (sparsity and computation in later algorithms)
+* - need of useful standardization
+* Results
+
+
