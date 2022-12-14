@@ -2,10 +2,11 @@ Similarity Matrices - Noah
 
 k-neighbors:
 * Sim
-* - no good way of standardization
 * - connecting outliers
-* + stability control
-* + connection to outliers
+* - connection between different clusters, no good way of standardization, i.e. different scale see data
+* + connecting points with different scale
+* + stability control -> not overfit
+* log n
 Results
 
 Mutual k-neighbors:
@@ -13,18 +14,26 @@ Mutual k-neighbors:
 * - no good way of standardization
 * - assigning outliers to cluster (crucial?) -> Solution: Identify and remove outliers?!
 * + stability control
+* + connects points having different scales, doesn't mix scales
+* log n <<
 * Results
 
 epsilon neighborhood:
 * Sim
 * - need of useful standardization
 * - Assigning outliers to cluser (crucial?) -> Solution: Identify and remove outliers?!
+* + if data is all of the same scale -> find empirically
 * Results
 
 Gaussian Full connected:
 * Sim
+* sigma ~ epsilon
+* + more (too much) information (global optimum findable)
 * - Computationally unefficient (sparsity and computation in later algorithms)
 * - need of useful standardization
+
 * Results
+
+
 
 
